@@ -1,0 +1,2 @@
+// Automatically generated file.  Do not edit!
+var BlocklyGamesMsg={"Games.name":"Xogos do Blockly","Games.puzzle":"Crebacabezas","Games.maze":"Labirinto","Games.bird":"Paxaro","Games.turtle":"Tartaruga","Games.movie":"Filme","Games.music":"Música","Games.pondTutor":"Pond Tutor","Games.pond":"Lagoa","Index.clear":"Delete all your solutions?","Index.subTitle":"Games for tomorrow's programmers.","Index.moreInfo":"Información para educadores...","Index.startOver":"Queres comezar de novo?","Index.clearData":"Clear data"}
