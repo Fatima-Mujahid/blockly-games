@@ -1,6 +1,6 @@
 {
 	"@metadata": {
-		"lastupdated": "2022-09-06 03:50:28.039245",
+		"lastupdated": "2023-02-24 21:06:58.199872",
 		"locale": "en",
 		"messagedocumentation": "qqq"
 	},
@@ -74,6 +74,16 @@
 	"Puzzle.tryAgain": "The highlighted block is not correct.\nKeep trying.",
 	"Puzzle.checkAnswers": "Check Answers",
 	"Puzzle.helpText": "For each animal (green), attach its picture, choose its number of legs, and make a stack of its traits.",
+	"Maze.moveEast": "E",
+	"Maze.moveEastTooltip": "Moves the player east one space.",
+	"Maze.moveWest": "W",
+	"Maze.moveWestTooltip": "Moves the player west one space.",
+	"Maze.moveNorth": "N",
+	"Maze.moveNorthTooltip": "Moves the player north one space.",
+	"Maze.moveSouth": "S",
+	"Maze.moveSouthTooltip": "Moves the player south one space.",
+	"Maze.skipBlock": "Skip Block",
+	"Maze.skipBlockTooltip": "Makes the player skip one space.",
 	"Maze.moveForward": "move forward",
 	"Maze.turnLeft": "turn left",
 	"Maze.turnRight": "turn right",

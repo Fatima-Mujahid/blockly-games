@@ -48,7 +48,7 @@ BlocklyGames.html.headerBar = function(ij, appName, levelLinkSuffix,
     farLeftHtml = ' &nbsp; ' + farLeftHtml;
   }
   return `
-<table width="100%">
+<table width="100%" style="display:none;">
   <tr>
     <td>
       <h1>

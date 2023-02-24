@@ -27,7 +27,7 @@ Maze.Blocks.init = function() {
   /**
    * Common HSV hue for all movement blocks.
    */
-  const MOVEMENT_HUE = 290;
+  const MOVEMENT_HUE = 188;
 
   /**
    * HSV hue for loop block.
@@ -50,8 +50,8 @@ Maze.Blocks.init = function() {
   const RIGHT_TURN = ' ↻';
 
   const TURN_DIRECTIONS = [
-    [BlocklyGames.getMsg('Maze.turnLeft', false), 'turnLeft'],
-    [BlocklyGames.getMsg('Maze.turnRight', false), 'turnRight'],
+    [BlocklyGames.getMsg('Maze.turnLeft', false), 'moveWest'],
+    [BlocklyGames.getMsg('Maze.turnRight', false), 'moveEast'],
   ];
 
   const PATH_DIRECTIONS = [
@@ -78,7 +78,86 @@ Maze.Blocks.init = function() {
       "colour": MOVEMENT_HUE,
       "tooltip": BlocklyGames.getMsg('Maze.moveForwardTooltip', false),
     },
-
+    // Block for moving east.
+    {
+      "type": "maze_moveEast",
+      "message0": `${BlocklyGames.getMsg('Maze.moveEast', false)} %1`,
+      "args0": [
+        {
+          "type": "field_image",
+          "src": "maze/moveright.png",
+          "width": 24,
+          "height": 24,
+        },
+      ],
+      "previousStatement": null,
+      "colour": LOOPS_HUE,
+      "tooltip": BlocklyGames.getMsg('Maze.whileTooltip', false),
+      "previousStatement": null,
+      "nextStatement": null,
+      "colour": MOVEMENT_HUE,
+      "tooltip": BlocklyGames.getMsg('Maze.moveEastTooltip', false),
+    },
+    // Block for moving west.
+    {
+      "type": "maze_moveWest",
+      "message0": `${BlocklyGames.getMsg('Maze.moveWest', false)} %1`,
+      "args0": [
+        {
+          "type": "field_image",
+          "src": "maze/moveleft.png",
+          "width": 24,
+          "height": 24,
+        },
+      ],
+      "previousStatement": null,
+      "nextStatement": null,
+      "colour": MOVEMENT_HUE,
+      "tooltip": BlocklyGames.getMsg('Maze.moveWestTooltip', false),
+    },
+    // Block for moving north.
+    {
+      "type": "maze_moveNorth",
+      "message0": `${BlocklyGames.getMsg('Maze.moveNorth', false)} %1`,
+      "args0": [
+        {
+          "type": "field_image",
+          "src": "maze/moveup.png",
+          "width": 24,
+          "height": 24,
+        },
+      ],
+      "previousStatement": null,
+      "nextStatement": null,
+      "colour": MOVEMENT_HUE,
+      "tooltip": BlocklyGames.getMsg('Maze.moveNorthTooltip', false),
+    },
+    // Block for moving south.
+    {
+      "type": "maze_moveSouth",
+      "message0": `${BlocklyGames.getMsg('Maze.moveSouth', false)} %1`,
+      "args0": [
+        {
+          "type": "field_image",
+          "src": "maze/movedown.png",
+          "width": 24,
+          "height": 24,
+        },
+      ],
+      "previousStatement": null,
+      "nextStatement": null,
+      "colour": MOVEMENT_HUE,
+      "tooltip": BlocklyGames.getMsg('Maze.moveSouthTooltip', false),
+    },
+     // Block for skipping block.
+     {
+      "type": "maze_skipBlock",
+      "message0": BlocklyGames.getMsg('Maze.skipBlock', false),
+      "previousStatement": null,
+      "nextStatement": null,
+      "colour": MOVEMENT_HUE,
+      "tooltip": BlocklyGames.getMsg('Maze.skipBlockTooltip', false),
+    },
     // Block for turning left or right.
     {
       "type": "maze_turn",
@@ -96,7 +175,6 @@ Maze.Blocks.init = function() {
       "tooltip": BlocklyGames.getMsg('Maze.turnTooltip', false),
       "extensions": ["maze_turn_arrows"],
     },
-
     // Block for conditional "if there is a path".
     {
       "type": "maze_if",
@@ -181,6 +259,31 @@ Maze.Blocks.init = function() {
 Blockly.JavaScript['maze_moveForward'] = function(block) {
   // Generate JavaScript for moving forward.
   return `moveForward('block_id_${block.id}');\n`;
+};
+
+Blockly.JavaScript['maze_moveEast'] = function(block) {
+  // Generate JavaScript for moving east.
+  return `moveEast('block_id_${block.id}');\n`;
+};
+
+Blockly.JavaScript['maze_moveWest'] = function(block) {
+  // Generate JavaScript for moving west.
+  return `moveWest('block_id_${block.id}');\n`;
+};
+
+Blockly.JavaScript['maze_moveNorth'] = function(block) {
+  // Generate JavaScript for moving north.
+  return `moveNorth('block_id_${block.id}');\n`;
+};
+
+Blockly.JavaScript['maze_moveSouth'] = function(block) {
+  // Generate JavaScript for moving south.
+  return `moveSouth('block_id_${block.id}');\n`;
+};
+
+Blockly.JavaScript['maze_skipBlock'] = function(block) {
+  // Generate JavaScript for skipping a block.
+  return `skipBlock('block_id_${block.id}');\n`;
 };
 
 Blockly.JavaScript['maze_turn'] = function(block) {

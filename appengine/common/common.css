@@ -78,13 +78,13 @@ button {
   color: #000;
 }
 button.primary {
-  border: 1px solid #dd4b39;
-  background-color: #dd4b39;
+  border: 1px solid #fda400;
+  background-color: #fda400;
   color: #fff;
 }
 button.secondary {
-  border: 1px solid #4d90fe;
-  background-color: #4d90fe;
+  border: 1px solid #fda400;
+  background-color: #fda400;
   color: #fff;
 }
 button.primary>img,

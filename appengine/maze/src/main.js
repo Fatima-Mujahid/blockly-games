@@ -49,9 +49,9 @@ const SKINS = [
   // crashSound: List of sounds (in various formats) for player crashes.
   // crashType: Behaviour when player crashes (stop, spin, or fall).
   {
-    sprite: 'maze/pegman.png',
-    tiles: 'maze/tiles_pegman.png',
-    background: false,
+    sprite: 'maze/avatar.png',
+    tiles: 'maze/tiles.png',
+    background: 'maze/background.png',
     look: '#000',
     winSound: ['maze/win.mp3', 'maze/win.ogg'],
     crashSound: ['maze/fail_pegman.mp3', 'maze/fail_pegman.ogg'],
@@ -382,10 +382,10 @@ function drawMap() {
   const finishMarker = Blockly.utils.dom.createSvgElement('image', {
       'id': 'finish',
       'height': 34,
-      'width': 20,
+      'width': 34,
     }, svg);
   finishMarker.setAttributeNS(Blockly.utils.dom.XLINK_NS, 'xlink:href',
-      'maze/marker.png');
+      'maze/goalIdle.gif');
 
   // Pegman's clipPath element, whose (x, y) is reset by displayPegman
   const pegmanClip = Blockly.utils.dom.createSvgElement('clipPath', {
@@ -489,7 +489,7 @@ function init() {
   const defaultXml =
       '<xml>' +
         '<block movable="' + (BlocklyGames.LEVEL !== 1) + '" ' +
-        'type="maze_moveForward" x="70" y="70"></block>' +
+        'type="maze_moveEast" x="70" y="70"></block>' +
       '</xml>';
   BlocklyInterface.loadBlocks(defaultXml, false);
 
@@ -945,14 +945,34 @@ function initInterpreter(interpreter, globalObject) {
   wrap('moveBackward');
 
   wrapper = function(id) {
-    turn(0, id);
+    turn(3, id);
+    move(0, id);
   };
-  wrap('turnLeft');
+  wrap('moveWest');
 
   wrapper = function(id) {
     turn(1, id);
+    move(0, id);
   };
-  wrap('turnRight');
+  wrap('moveEast');
+
+  wrapper = function(id) {
+    turn(0, id);
+    move(0, id);
+  };
+  wrap('moveNorth');
+
+  wrapper = function(id) {
+    turn(2, id);
+    move(0, id);
+  };
+  wrap('moveSouth');
+
+  wrapper = function(id) {
+    move(0, id);
+    move(0, id);
+  };
+  wrap('skipBlock');
 
   wrapper = function(id) {
     return isPath(0, id);
@@ -1415,20 +1435,26 @@ function move(direction, id) {
 
 /**
  * Turn pegman left or right.
- * @param {number} direction Direction to turn (0 = left, 1 = right).
+ * @param {number} direction Direction to turn (0 = north, 1 = east, 2=south, 3=left).
  * @param {string} id ID of block that triggered this action.
  */
 function turn(direction, id) {
-  if (direction) {
+  let current = pegmanD;
+  pegmanD = direction;
+  if (current < direction) {
     // Right turn (clockwise).
-    pegmanD++;
-    log.push(['right', id]);
-  } else {
-    // Left turn (counterclockwise).
-    pegmanD--;
-    log.push(['left', id]);
+    while (current < direction) {
+      current++;
+      log.push(['right', id]);
+    }
   }
-  pegmanD = constrainDirection4(pegmanD);
+  else if(current > direction) {
+    // Left turn (counterclockwise).
+    while (current > direction) {
+      current--;
+      log.push(['left', id]);
+    }
+  }
 }
 
 /**
