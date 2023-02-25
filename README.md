@@ -1,9 +1,5 @@
 ![Blockly Games](https://raw.githubusercontent.com/wiki/google/blockly-games/title.png)
 
-Google's Blockly Games is a series of educational games that teach programming.
-It is based on the [Blockly](https://developers.google.com/blockly/) library.
-All code is free and open source.
+The objective of this project was to customize an open-source project named Blockly-games. The project was cloned from its Github repository and was made running on the local machine. The functionality of three blocks - move forward, left and right was changed, and the new functionality of skip a block was added. The web application was hosted on GitHub pages after customization.
 
-**The games are available at https://blockly.games/**
-
-**The developer's site is at https://github.com/google/blockly-games/wiki**
+[https://fatima-mujahid.github.io/blockly-games/appengine/maze.html?lang=en](https://fatima-mujahid.github.io/blockly-games/appengine/maze.html?lang=en)
